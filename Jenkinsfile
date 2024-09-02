@@ -2,6 +2,12 @@ pipeline {
     agent any
 
     stages {
+        stage('Clean Workspace') {
+            steps {
+                sh 'rm -rf node_modules'
+                sh 'npm cache clean --force'
+            }
+        }
         stage('Build') {
             agent {
                 docker {
