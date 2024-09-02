@@ -18,6 +18,7 @@ pipeline {
             steps {
                 sh '''
                    
+                    npm cache clean --force
                     node --version
                     npm --version
                     npm install
