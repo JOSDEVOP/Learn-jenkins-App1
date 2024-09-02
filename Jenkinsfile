@@ -45,7 +45,7 @@ pipeline {
                 test -f build/index.html
                 npm test
                 '''
-                archiveArtifacts artifacts: 'test-results/**'
+                // archiveArtifacts artifacts: 'test-results/**'
             }
         }
         stage('E2E') {
