@@ -3,18 +3,18 @@ pipeline {
 
     stages {
         
-        stage('Clean Workspace') {
-    agent {
-                docker {
-                    image 'node:18-alpine'
-                    reuseNode true
-                }
-            }
+    //     stage('Clean Workspace') {
+    // agent {
+    //             docker {
+    //                 image 'node:18-alpine'
+    //                 reuseNode true
+    //             }
+    //         }
 
-            steps {
-                deleteDir()
-            }
-        }
+    //         steps {
+    //             deleteDir()
+    //         }
+    //     }
         stage('Build') {
             agent {
                 docker {
