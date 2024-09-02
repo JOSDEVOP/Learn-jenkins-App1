@@ -8,12 +8,12 @@ pipeline {
         //     }
         // }
         stage('Build') {
-            // agent {
-            //     docker {
-            //         image 'node:18-alpine'
-            //         reuseNode true
-            //     }
-            // }
+            agent {
+                docker {
+                    image 'node:18-alpine'
+                    reuseNode true
+                }
+            }
             environment {
                 NPM_CONFIG_CACHE = './.npm-cache' // Set a local npm cache directory
             }
@@ -22,8 +22,8 @@ pipeline {
                    
                     node --version
                     npm --version
+               
                     npm install
-                    #npm ci
                     npm run build
                 '''
             }
