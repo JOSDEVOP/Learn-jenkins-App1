@@ -2,13 +2,15 @@ pipeline {
     agent any
 
     stages {
-            agent {
+        
+        stage('Clean Workspace') {
+    agent {
                 docker {
                     image 'node:18-alpine'
                     reuseNode true
                 }
             }
-        stage('Clean Workspace') {
+
             steps {
                 deleteDir()
             }
