@@ -14,9 +14,9 @@ pipeline {
                     reuseNode true
                 }
             }
-            // environment {
-            //     NPM_CONFIG_CACHE = './.npm-cache' // Set a local npm cache directory
-            // }
+            environment {
+                NPM_CONFIG_CACHE = './.npm-cache' // Set a local npm cache directory
+            }
             steps {
                 sh '''
                     npm cache clean --force
