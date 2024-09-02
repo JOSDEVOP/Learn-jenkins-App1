@@ -2,11 +2,11 @@ pipeline {
     agent any
 
     stages {
-        // stage('Clean Workspace') {
-        //     steps {
-        //         deleteDir()
-        //     }
-        // }
+        stage('Clean Workspace') {
+            steps {
+                deleteDir()
+            }
+        }
         stage('Build') {
             agent {
                 docker {
@@ -14,15 +14,15 @@ pipeline {
                     reuseNode true
                 }
             }
-            
+            environment {
+                NPM_CONFIG_CACHE = './.npm-cache' // Set a local npm cache directory
+            }
             steps {
                 sh '''
-                   
                     npm cache clean --force
                     node --version
                     npm --version
                     npm ci
-                  
                     npm run build
                 '''
             }
