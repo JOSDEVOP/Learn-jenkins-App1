@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clean Workspace') {
             steps {
-                deleteDir() // This will remove the entire workspace, ensuring a clean slate
+                deleteDir()
             }
         }
         stage('Build') {
@@ -13,6 +13,9 @@ pipeline {
                     image 'node:18-alpine'
                     reuseNode true
                 }
+            }
+            environment {
+                NPM_CONFIG_CACHE = './.npm-cache' // Set a local npm cache directory
             }
             steps {
                 sh '''
